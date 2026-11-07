@@ -8,6 +8,16 @@
 <meta http-equiv="Expires" content="0">
 <meta name="copyright" content="Todos os direitos reservados">
 <title>Petitgatoo · Gestão da confeitaria</title>
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="application-name" content="Petitgatoo">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Petitgatoo">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Pacifico&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -1253,6 +1263,42 @@ body::before{background:radial-gradient(900px 420px at 8% -10%,rgba(249,189,176,
 .info .paybox .pchk{flex:0 0 auto}
 .info .paybox .pin{width:140px}
 .dx-st.dx-rk{grid-template-columns:8px minmax(0,1.3fr) minmax(30px,.7fr) max-content;gap:10px}
+
+/* ===== Receitas por PDF ===== */
+.rc-panel{position:fixed;inset:0;z-index:205;display:none;flex-direction:column;background:var(--bg);overflow:auto;padding:20px clamp(14px,3vw,40px) 40px;font-family:var(--font);color:var(--tx)}
+.rc-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.rc-h2{margin:0;font-size:24px}.rc-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rc-in{width:100%;padding:10px 12px;border-radius:12px;border:2px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+.rc-in:focus-visible,.rc-card:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.rc-search{width:260px;max-width:100%}
+.rc-drop{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:22px;border:2px dashed var(--bd);border-radius:18px;background:var(--card);cursor:pointer;margin-bottom:18px;color:var(--mut)}
+.rc-drop b{color:var(--tx)}.rc-drop.on{border-color:var(--ac);background:var(--ac-soft)}
+.rc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.rc-card{background:var(--card);border:2px solid var(--bd);border-radius:18px;padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:8px;box-shadow:var(--sh-sm)}
+.rc-card:hover{border-color:var(--ac);box-shadow:var(--sh)}
+.rc-card h3{margin:0;font-size:17px;line-height:1.25}
+.rc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rc-chip{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--ac-soft);color:var(--ac)}
+.rc-prev{margin:0;padding-left:18px;font-size:13px;color:var(--tx-2)}.rc-more{list-style:none;margin-left:-18px;color:var(--mut)}
+.rc-src{font-size:11.5px;color:var(--mut);margin-top:auto}
+.rc-empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:40px 10px}
+.rc-warn,.rc-err{background:var(--warn-soft);color:var(--tx);border:2px solid var(--warn);border-radius:12px;padding:10px 12px;font-size:13px;margin:0 0 12px}
+.rc-err{background:var(--err-soft);border-color:var(--err);color:var(--err);font-weight:700}
+.rc-warn code{font-size:12px;word-break:break-all}
+.rc-busy{display:none;font-weight:700;color:var(--ac);padding:8px 0}
+.rc-box{max-width:640px;width:100%;max-height:92vh;overflow:auto;text-align:left}
+.rc-vh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}.rc-t{margin:0;font-size:22px;line-height:1.25}
+.rc-scale{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0}.rc-scale .rc-in{width:78px}
+.rc-h{margin:18px 0 6px;font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
+.rc-g{margin:12px 0 2px;font-size:14px}.rc-ul,.rc-ol{margin:4px 0;padding-left:22px}.rc-ul li,.rc-ol li{margin:4px 0}.rc-q{color:var(--ac)}
+.rc-desc{color:var(--tx-2);margin:6px 0}
+.rc-foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.rc-del{color:var(--err);margin-left:auto}
+.rc-l{display:block;font-weight:800;font-size:12.5px;margin:12px 0 4px;color:var(--mut)}.rc-l small{font-weight:600}
+.rc-file{border-top:2px dashed var(--bd);padding-top:10px;margin-top:10px}
+.rc-rev{display:flex;gap:10px;align-items:flex-start;padding:8px 0}.rc-rev>input{margin-top:12px}.rc-revb{flex:1;min-width:0}.rc-revb small{display:block;color:var(--mut);margin:4px 0}
+textarea.rc-in{resize:vertical}
+.rc-box{background:var(--card)}
+@media(max-width:640px){.rc-actions{width:100%}.rc-search{width:100%;flex:1 1 100%}.rc-box{max-height:94vh}}
 </style>
 <meta name="theme-color" content="#FFF9E6">
 </head>
@@ -1300,7 +1346,12 @@ body::before{background:radial-gradient(900px 420px at 8% -10%,rgba(249,189,176,
     <div class="sp"></div>
 
     <button class="btn ghost" id="dashBtn" type="button" style="display:none; font-weight:700;"><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg> Visão Geral</button>
+    <button class="btn ghost" id="archivedBtn" type="button" style="display:none; font-weight:700;">
+  <svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+  Concluídos
+</button>
     <button class="btn ghost" id="cadBtn" type="button" style="display:none; font-weight:700;">🗂️ Cadastros</button>
+<button class="btn ghost" id="recBtn" type="button" style="display:none; font-weight:700;">📖 Receitas</button>
     <button class="btn ghost" id="estBtn" type="button" style="display:none; font-weight:700;">
   <svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
   Estoque
@@ -1495,14 +1546,14 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;","
 const norm = s => String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 const titleCase = s => String(s||"").toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 const PVC = "Pasta de leite em pó (modelagem)";
-const PP  = "COZINHA - MODELAGEM - DECORAÇÃO - EMBALAGEM";
+const PP  = "MASSA - RECHEIO - APLIQUES - EMBALAGEM";
 const R = (n,nome,det,mat,qtd,proc) => ({n,nome,det,mat,qtd,proc,done:{},doneBy:{}});
 const STATUSES = ["Orçamento","Aguardando sinal","Em produção","Pronto","Retirado","Entregue","Cancelado"];
 const STATUS_COLORS = { "Orçamento":"#a8887a","Aguardando sinal":"#e0a030","Em produção":"#e48f86","Pronto":"#4fa896","Retirado":"#6fbfae","Entregue":"#8a5a44","Cancelado":"#c8453f" };
 const statusColor = s => STATUS_COLORS[s] || "#64748b";
 const DONE_STATUSES = ["Pronto","Retirado","Entregue","Cancelado"];
 
-let S = {list:[], cur:null, edit:false, editPasta:null, search:"", showDash:false};
+let S = {list:[], cur:null, edit:false, editPasta:null, search:"", showDash:false, showArchived:false};
 
 function migrate(){
   S.list.forEach(o=>{
@@ -1868,16 +1919,17 @@ auth.onAuthStateChanged(async user => {
     $("teamBtn").style.display = "";
     $("bellBtn").style.display = "";
     $("dashBtn").style.display = ""; 
-$("pendBtn").style.display = ""; $("cadBtn").style.display = ""; $("estBtn").style.display = "";
+$("pendBtn").style.display = ""; $("cadBtn").style.display = ""; $("recBtn").style.display = ""; $("estBtn").style.display = "";
+$("archivedBtn").style.display = "";
 $("profileBtn").style.display = "";
     
     try{ await db.collection(USERS_COLLECTION).doc(user.uid).set(Object.assign({nome, email: ME.email, role: ME.role, online:true, lastSeen: TS(), doing:"Entrou no painel", doingAt: TS(), viewing:"", viewingId:""}, acceptedNow ? {aceiteTermosEm: TS(), aceiteTermosVersao: LEGAL.versao} : {}), {merge:true}); }catch(e){ console.warn("perfil:", e); }
     lastViewId = null; firstSnapshot = true;
-    startTeamListeners(); startNotifs(); startPresence(); startSync(); startCad(); startEstoque();
+    startTeamListeners(); startNotifs(); startPresence(); startSync(); startCad(); if(typeof startRec==="function") startRec(); startEstoque();
     logAct("login", "Entrou no painel");
     setTimeout(() => $("ld").classList.remove("show"), 8000);
-  } else {
-    stopPresence(); stopTeamListeners(); stopCad(); stopEstoque();
+    } else {
+    stopPresence(); stopTeamListeners(); stopCad(); if(typeof stopRec==="function") stopRec(); stopEstoque();
     ME = {uid:null, nome:"", email:"", role:""};
     $("loginScreen").style.display = "flex";
     $("userEmail").style.display = "none";
@@ -1885,7 +1937,10 @@ $("profileBtn").style.display = "";
     $("teamBtn").style.display = "none";
     $("bellBtn").style.display = "none";
     $("dashBtn").style.display = "none";
-$("pendBtn").style.display = "none"; $("cadBtn").style.display = "none"; $("estBtn").style.display = "none";
+    $("pendBtn").style.display = "none"; 
+    $("cadBtn").style.display = "none"; $("recBtn").style.display = "none"; 
+    $("estBtn").style.display = "none";
+    $("archivedBtn").style.display = "none"; // Esconde o botão novo de Concluídos
     $("profileBtn").style.display = "none";
     stopNotifs();
     $("ld").classList.remove("show");
@@ -1912,7 +1967,7 @@ function matches(o, q) {
   if (!q) return true;
   const qn = norm(q);
   const test = s => norm(s).includes(qn);
-  if (test(o.num) || test(o.cliente) || test(o.status) || test(o.entrega) || test(o.pasta) || test(o.pastaLink)) return true;
+  if (test(o.num) || test(o.cliente) || test(o.info) || test(o.status) || test(o.entrega) || test(o.pasta) || test(o.pastaLink)) return true;
   for (const it of (o.items || [])) {
     if (test(it.nota)) return true;
     if ((it.notes || []).some(n => test(n.texto) || test(n.nome))) return true;
@@ -1986,12 +2041,11 @@ function summaryHTML(o, gp){
     (ip.total > 0 && ip.pct === 100 ? done : pend).push(row);
     if(it.alert) alerts.push(row);
   });
-  const falta = gp.total ? 100 - gp.pct : 0;
-  const ok = gp.total > 0 && falta === 0;
+  const ok = gp.total > 0 && gp.pct === 100;
   const li = r => `<button class="sum-it" data-goto="${r.i}" type="button"><span class="nm">${esc(r.name)}</span><span class="pc">${r.pct}%</span></button>`;
   return `<div class="summary${ok ? " ok" : ""}">
     <div class="sum-title">Resumo do pedido ${esc(o.num)}</div>
-    <div class="sum-falta"><span class="big">${ok ? ic("check",38) : falta + "%"}</span><span class="lbl">${ok ? "Pedido 100% concluído" : "faltam para<br>finalizar o pedido"}</span></div>
+    <div class="sum-falta"><span class="big">${ok ? ic("check",38) : gp.pct + "%"}</span><span class="lbl">${ok ? "Pedido 100% concluído" : "concluído"}</span></div>
     <div class="sum-bar"><div style="width:${gp.pct}%"></div></div>
     <div class="sum-sub">${gp.pct}% concluído · ${done.length} de ${o.items.length} itens prontos</div>
     ${alerts.length ? `<div class="sum-sec al"><h4>${ic("alert",13)} Com pendência <span class="n">${alerts.length}</span></h4><div class="sum-list">${alerts.map(li).join("")}</div></div>` : ""}
@@ -2287,7 +2341,7 @@ function renderDashboard(){
       const diff = Math.round((dt - today) / 864e5);
       if(diff < 0) tag = `<em class="late">Atrasada ${-diff}d</em>`; else if(diff === 0) tag = `<em class="soon">Hoje</em>`; else if(diff <= 3) tag = `<em class="soon">${diff}d</em>`;
     }
-    return `<button type="button" class="dx-row" onclick="dashOpen('${o.id}')"><span class="dx-rm"><b>Pedido ${esc(o.num)}</b><span>${esc(o.cliente)}</span></span><span class="dx-dt">${tag}${esc(o.entrega || "sem data")}</span><span class="dx-bar"><i style="width:${pr}%"></i></span><span class="dx-pct">${pr}%</span></button>`;
+    return `<button type="button" class="dx-row" onclick="dashOpen('${o.id}')"><span class="dx-rm"><b>Pedido ${esc(o.num)}</b><span>${esc(o.cliente)}${o.info?" · "+esc(o.info):""}</span></span><span class="dx-dt">${tag}${esc(o.entrega || "sem data")}</span><span class="dx-bar"><i style="width:${pr}%"></i></span><span class="dx-pct">${pr}%</span></button>`;
   }).join("") || empty("Nenhum pedido cadastrado.");
 
   const stRows = STATUSES.filter(x => stCount[x]).map(x =>
@@ -2352,7 +2406,13 @@ function render(){
   document.body.classList.toggle("edit", S.edit);
   $("ed").classList.toggle("on", S.edit);
   $("ed").innerHTML = S.edit ? ic("check",15) + " Concluir" : ic("pencil",15) + " Editar";
-  $("dashBtn").classList.toggle("on", S.showDash);
+    $("dashBtn").classList.toggle("on", S.showDash);
+  const numArchived = S.list.filter(o => osClosed(o)).length;
+  $("archivedBtn").classList.toggle("on", S.showArchived);
+  $("archivedBtn").innerHTML = S.showArchived 
+    ? ic("clipboard-list",15) + " Em Andamento" 
+    : ic("folder",15) + ` Concluídos <span class="badge" style="background:var(--ac); color:#fff; padding:2px 6px; border-radius:10px; font-size:10px; margin-left:4px;">${numArchived}</span>`;
+  $("up").style.display = S.showArchived ? "none" : "inline-flex";
 
   if (S.showDash) {
     $("tabsBar").style.display = "none";
@@ -2364,7 +2424,15 @@ function render(){
   }
 
   const q = S.search;
-  const filtered = q ? S.list.filter(o => matches(o, q)) : S.list;
+  let filtered = q ? S.list.filter(o => matches(o, q)) : S.list;
+  
+  // A MÁGICA DO ARQUIVAMENTO ACONTECE AQUI:
+  if (S.showArchived) {
+    filtered = filtered.filter(o => osClosed(o));
+  } else {
+    filtered = filtered.filter(o => !osClosed(o));
+  }
+  
   if(filtered.length && !filtered.find(o => o.id === S.cur)) S.cur = filtered[0].id;
 
   if(q && !filtered.length){
@@ -2374,7 +2442,7 @@ function render(){
   }
 
   const tabsEl = $("tabs"), prevLeft = tabsEl.scrollLeft, prevTop = tabsEl.scrollTop;
-  tabsEl.innerHTML = tabSort(filtered).map(o=>`<div class="tab${o.id===S.cur?" on":""}${tabIsDone(o)?" done":""}" data-id="${o.id}" role="button" tabindex="0"><button class="tab-del" data-del-os="${o.id}" title="Excluir pedido" type="button">${ic("x",14)}</button><div class="thead"><div class="tnum"><i class="dot" title="${esc(o.status||"Orçamento")}" style="background:${statusColor(o.status)}"></i>Pedido ${esc(o.num)}</div>${tabBadge(o)}</div><div class="tcli" title="${esc(o.cliente)}">${esc(o.cliente)||"—"}</div><div class="tfoot">${tabDoneHTML(o)}<div class="tviewers" data-tv="${o.id}"></div></div><div class="tbar"><i style="width:${osProgress(o).pct}%"></i></div></div>`).join("");
+  tabsEl.innerHTML = tabSort(filtered).map(o=>`<div class="tab${o.id===S.cur?" on":""}${tabIsDone(o)?" done":""}" data-id="${o.id}" role="button" tabindex="0"><button class="tab-del" data-del-os="${o.id}" title="Excluir pedido" type="button">${ic("x",14)}</button><div class="thead"><div class="tnum"><i class="dot" title="${esc(o.status||"Orçamento")}" style="background:${statusColor(o.status)}"></i>Pedido ${esc(o.num)}</div>${tabBadge(o)}</div><div class="tcli" title="${esc(o.cliente)}">${esc(o.cliente)||"—"}</div>${o.info?`<div class="tinfo" title="${esc(o.info)}">${esc(o.info)}</div>`:""}<div class="tfoot">${tabDoneHTML(o)}<div class="tviewers" data-tv="${o.id}"></div></div><div class="tbar"><i style="width:${osProgress(o).pct}%"></i></div></div>`).join("");
   tabsEl.style.scrollBehavior = "auto"; tabsEl.scrollLeft = prevLeft; tabsEl.scrollTop = prevTop;
   syncTabs(filtered.length);
 
@@ -2407,6 +2475,7 @@ function render(){
     <div><b>Pedido nº</b><div class="v"${ce} data-o="num">${fmt(o.num)}</div></div>
     <div><b>Cliente</b><div class="v"${ce} data-o="cliente">${fmt(o.cliente)}</div></div>
     <div><b>Tema</b><div class="v"${ce} data-o="tema">${fmt(o.tema)}</div></div>
+<div class="info-obs"><b>Informações</b><div class="v"${ce} data-o="info">${fmt(o.info)}</div></div>
     <div><b>Entrega</b><div class="v ${dateCls}"${ce} data-o="entrega">${fmt(o.entrega)}</div>${dateBadge}</div>
     ${S.edit ? `<div><b>Status</b><select class="sel" data-o="status">${STATUSES.map(s=>`<option value="${esc(s)}"${s===o.status?" selected":""}>${esc(s)}</option>`).join("")}</select></div>` : `<div><b>Status</b><div class="v"><span class="sbadge" style="background:${statusColor(o.status)}">${esc(o.status||"Orçamento")}</span></div></div>`}
     <button class="btn ghost" id="osEstBtn" type="button" title="Ver embalagens e acessórios usados neste pedido">${ic("package",15)} Embalagens</button>
@@ -2562,7 +2631,7 @@ async function mutateItems(osId, fn){
   });
 }
 const safe = p => Promise.resolve(p).then(() => true).catch(e => { console.error(e); toast("Erro ao salvar alteração."); return false; });
-const META_LABEL = {num:"o número", tema:"o tema", cliente:"o cliente", entrega:"a data de entrega", pasta:"a pasta de referências", pastaLink:"o link de referências"};
+const META_LABEL = {num:"o número", tema:"o tema", info:"as informações", cliente:"o cliente", entrega:"a data de entrega", pasta:"a pasta de referências", pastaLink:"o link de referências"};
 const FIELD_LABEL = {n:"o nº", nome:"a peça", det:"o detalhe", mat:"os insumos", qtd:"a quantidade", proc:"as etapas"};
 const itemLabel = (it,i) => `${(it.rows && it.rows[0] && it.rows[0].n) || (i+1)} · ${(it.rows && it.rows[0] && it.rows[0].nome) || "Novo produto"}`;
 
@@ -2631,6 +2700,13 @@ document.addEventListener("click", e => {
   const gotoBtn = t.closest("[data-goto-pend]");
   if(gotoBtn){ e.preventDefault(); irParaPendencia(gotoBtn.dataset.gotoPend, +gotoBtn.dataset.idx); return; }
   if(t.closest("#dashBtn")){ e.preventDefault(); S.showDash = !S.showDash; render(); return; }
+    if(t.closest("#archivedBtn")){ 
+    e.preventDefault(); 
+    S.showArchived = !S.showArchived; 
+    S.showDash = false; // Fecha a visão geral se estiver aberta
+    render(); 
+    return; 
+  }
   if(t.closest("#profileBtn")){ e.preventDefault(); return; }
   if(t.closest("#profSave")){ e.preventDefault(); return; }
 
@@ -2793,10 +2869,10 @@ $("ed").onclick = () => { S.edit = !S.edit; render(); };
 /* ===== Cadastros internos: clientes, temas e produtos ===== */
 const COL_CLI="ptg_clientes",COL_TEMA="ptg_temas",COL_PROD="ptg_produtos",COL_EST="ptg_estoque",COLS={cli:COL_CLI,tema:COL_TEMA,prod:COL_PROD,est:COL_EST};
 const PROD_BASE=[
- {nome:"Modelagem em pasta de leite em pó",mat:["Leite em pó","Glucose de milho","Corante em gel"],proc:"MODELAGEM - DECORAÇÃO - EMBALAGEM"},
- {nome:"Mini cake donuts",mat:["Massa de bolo","Cobertura","Confeitos"],proc:"COZINHA - COBERTURA - DECORAÇÃO - EMBALAGEM"},
- {nome:"Cake cilindro",mat:["Massa","Recheio","Cobertura","Caixa cilindro"],proc:"COZINHA - COBERTURA - DECORAÇÃO - EMBALAGEM"},
- {nome:"Kit festa personalizado",mat:["Doces sortidos","Topo personalizado"],proc:"COZINHA - MODELAGEM - DECORAÇÃO - EMBALAGEM"}];
+ {nome:"Modelagem em pasta de leite em pó",mat:["Leite em pó","Glucose de milho","Corante em gel"],proc:"APLIQUES - EMBALAGEM"},
+ {nome:"Mini cake donuts",mat:["Massa de bolo","Cobertura","Confeitos"],proc:"MASSA - RECHEIO - APLIQUES - EMBALAGEM"},
+ {nome:"Cake cilindro",mat:["Massa","Recheio","Cobertura","Caixa cilindro"],proc:"MASSA - RECHEIO - APLIQUES - EMBALAGEM"},
+ {nome:"Kit festa personalizado",mat:["Doces sortidos","Topo personalizado"],proc:"MASSA - RECHEIO - APLIQUES - EMBALAGEM"}];
 let CAD={cli:[],tema:[],prod:[],est:[]},cadUnsubs=[],cadTab="prod";
 const slug=n=>String(n||"").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
 const brl=v=>(+v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
@@ -2812,6 +2888,7 @@ function startCad(){
   [[COL_CLI,"cli"],[COL_TEMA,"tema"],[COL_PROD,"prod"],[COL_EST,"est"]].forEach(([c,k])=>{
     cadUnsubs.push(db.collection(c).onSnapshot(snap=>{
       CAD[k]=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),"pt-BR"));
+      if(k==="prod")snap.docs.forEach(d=>{const v=d.data();if(v.proc&&/COZINHA|MODELAGEM|COBERTURA|DECORA[ÇC][ÃA]O/i.test(v.proc)){const b=PROD_BASE.find(x=>slug(x.nome)===d.id);db.collection(COL_PROD).doc(d.id).set({proc:(b&&b.proc)||PP},{merge:true})}});
       if(k==="prod"&&!snap.docs.length){let seeded=false;try{seeded=!!localStorage.getItem("petitgatoo_prod_seed")}catch(e){}
         if(!seeded){try{localStorage.setItem("petitgatoo_prod_seed","1")}catch(e){} PROD_BASE.forEach(x=>db.collection(COL_PROD).doc(slug(x.nome)).set({...x,preco:0}))}}
       const m=document.getElementById("cadModal"),a=document.activeElement;
@@ -2830,7 +2907,10 @@ function cadStats(){
   return {cli,tema,prod};
 }
 function renderCad(){
-  const m=document.getElementById("cadModal"),names={cli:"Clientes",tema:"Temas",prod:"Produtos",est:"Embalagens/Acessórios"},one={cli:"cliente",tema:"tema",prod:"produto",est:"item"};
+  const m=document.getElementById("cadModal"),
+        names={cli:"Clientes",tema:"Temas",prod:"Produtos",est:"Embalagens/Acessórios"},
+        one={cli:"cliente",tema:"tema",prod:"produto",est:"item"};
+
   // Aba Estoque tem render próprio
   if(cadTab==="est"){
     const list=CAD.est;
@@ -2839,19 +2919,31 @@ function renderCad(){
       <p class="pc-help">Itens de <b>embalagem</b> e <b>acessório</b>. Ajustes de quantidade, alertas e entradas/saídas ficam no botão <b>Estoque</b> do cabeçalho.</p>
       <div class="pc-tabs">${Object.keys(names).map(k=>`<button type="button" class="btn ${k===cadTab?"pri":"ghost"}" data-ct="${k}">${names[k]} (${k==="est"?CAD.est.length:CAD[k].length})</button>`).join("")}</div>
       <div class="pc-add"><input id="cadNew" class="login-input" placeholder="Adicionar ${one[cadTab]}…" maxlength="80" aria-label="Novo ${one[cadTab]}"><button class="btn pri" data-cadd type="button">Adicionar</button></div>
-      <div class="pc-list">${list.map(x=>`<div class="pc-item"><span class="pc-n"><b>${esc(x.nome)}</b><small>${x.tipo==="acessorio"?"Acessório":"Embalagem"} · ${(x.qtd||0)} ${esc(x.unidade||"un")}${x.minimo?` (mín. ${x.minimo})`:""}</small></span><button class="btn ghost" data-cx="${esc(x.id)}" type="button" aria-label="Remover ${esc(x.nome)}">×</button></div>`).join("")||'<div class="dx-empty">Nada cadastrado ainda.</div>'}</div>
+      <div class="pc-list">${list.map(x=>`<div class="pc-item">
+        <span class="pc-n"><b>${esc(x.nome)}</b><small>${x.tipo==="acessorio"?"Acessório":"Embalagem"} · ${(x.qtd||0)} ${esc(x.unidade||"un")}${x.minimo?` (mín. ${x.minimo})`:""}</small></span>
+        <button class="btn ghost" data-ce="${esc(x.id)}" type="button" aria-label="Editar ${esc(x.nome)}" title="Editar">${ic("pencil",14)}</button>
+        <button class="btn ghost" data-cx="${esc(x.id)}" type="button" aria-label="Remover ${esc(x.nome)}">×</button>
+      </div>`).join("")||'<div class="dx-empty">Nada cadastrado ainda.</div>'}</div>
       <button class="btn pri" type="button" data-open-est style="width:100%;margin-top:10px">Abrir painel de Estoque</button>
     </div>`;
     m.querySelector("[data-open-est]").onclick=()=>{m.style.display="none";openEstoque();};
     return;
   }
+
   const use=cadStats()[cadTab];
   m.innerHTML=`<div class="login-card pc-card" role="dialog" aria-modal="true" aria-label="Cadastros">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 class="pc-t">Cadastros</h3><button class="btn ghost" data-cclose type="button">Fechar</button></div>
     <p class="pc-help">Tudo que você digita nos pedidos entra aqui sozinho e pode ser escolhido nos próximos. Os números ao lado mostram o que mais sai.</p>
     <div class="pc-tabs">${Object.keys(names).map(k=>`<button type="button" class="btn ${k===cadTab?"pri":"ghost"}" data-ct="${k}">${names[k]} (${k==="est"?CAD.est.length:CAD[k].length})</button>`).join("")}</div>
     <div class="pc-add"><input id="cadNew" class="login-input" placeholder="Adicionar ${one[cadTab]}…" maxlength="80" aria-label="Novo ${one[cadTab]}"><button class="btn pri" data-cadd type="button">Adicionar</button></div>
-    <div class="pc-list">${CAD[cadTab].map(x=>{const u=use.get(slug(x.nome));return `<div class="pc-item"><span class="pc-n"><b>${esc(x.nome)}</b><small>${u?(cadTab==="prod"?u.q+" un. vendidas":u.n+" pedido(s)"):"ainda sem pedidos"}</small></span>${cadTab==="prod"?`<input class="login-input pc-pr" type="number" min="0" step="0.01" value="${x.preco||""}" placeholder="R$ un." data-cp="${esc(x.id)}" aria-label="Preço unitário de ${esc(x.nome)}">`:""}<button class="btn ghost" data-cx="${esc(x.id)}" type="button" aria-label="Remover ${esc(x.nome)}">×</button></div>`}).join("")||'<div class="dx-empty">Nada cadastrado ainda.</div>'}</div>
+    <div class="pc-list">${CAD[cadTab].map(x=>{
+      const u=use.get(slug(x.nome));
+      return `<div class="pc-item">
+        <span class="pc-n"><b>${esc(x.nome)}</b><small>${u?(cadTab==="prod"?u.q+" un. vendidas":u.n+" pedido(s)"):"ainda sem pedidos"}</small></span>
+        ${cadTab==="prod"?`<input class="login-input pc-pr" type="number" min="0" step="0.01" value="${x.preco||""}" placeholder="R$ un." data-cp="${esc(x.id)}" aria-label="Preço unitário de ${esc(x.nome)}">`:""}
+        <button class="btn ghost" data-ce="${esc(x.id)}" type="button" aria-label="Editar ${esc(x.nome)}" title="Editar">${ic("pencil",14)}</button>
+        <button class="btn ghost" data-cx="${esc(x.id)}" type="button" aria-label="Remover ${esc(x.nome)}">×</button>
+      </div>`;}).join("")||'<div class="dx-empty">Nada cadastrado ainda.</div>'}</div>
   </div>`;
 }
 function openCad(){
@@ -2860,16 +2952,102 @@ function openCad(){
     m=document.createElement("div");m.className="name-modal";m.id="cadModal";document.body.appendChild(m);
     m.addEventListener("mousedown",e=>{if(e.target===m)m.style.display="none"});
     m.addEventListener("keydown",e=>{if(e.key==="Escape")m.style.display="none";if(e.key==="Enter"&&e.target.id==="cadNew")m.querySelector("[data-cadd]").click()});
-    m.addEventListener("click",async e=>{
-      const t=e.target.closest("[data-ct],[data-cx],[data-cadd],[data-cclose]");if(!t)return;
-      if(t.hasAttribute("data-cclose")){m.style.display="none";return}
-      if(t.dataset.ct){cadTab=t.dataset.ct;renderCad();return}
-      if(t.dataset.cx){if(confirm("Remover este cadastro? Os pedidos já feitos não mudam."))await db.collection(COLS[cadTab]).doc(t.dataset.cx).delete();setTimeout(renderCad,40);return}
-      if(t.hasAttribute("data-cadd")){
-  const v=m.querySelector("#cadNew").value.trim();if(!v)return;
-  const extra = cadTab==="prod" ? {mat:[],proc:PP} : cadTab==="est" ? {tipo:"embalagem",qtd:0,minimo:0,unidade:"un"} : {};
-  await regUp(COLS[cadTab],v,extra);
-  setTimeout(()=>{renderCad();const i=m.querySelector("#cadNew");if(i)i.focus()},40);
+    m.addEventListener("click", async e=>{
+  const t = e.target.closest("[data-ct],[data-ce],[data-cx],[data-cadd],[data-cclose]");
+if(!t) return;
+  if(!t) return;
+
+  if(t.hasAttribute("data-cclose")){ m.style.display="none"; return; }
+
+  if(t.dataset.ct){ cadTab=t.dataset.ct; renderCad(); return; }
+
+  // ---- EDITAR ----
+  if(t.dataset.ce){
+  if(cadTab === "est"){ m.style.display = "none"; openEstoque(); return; }
+
+  const id   = t.dataset.ce;
+  const item = CAD[cadTab].find(x => x.id === id);
+  if(!item) return;
+
+  const row = t.closest(".pc-item");
+  const b   = row && row.querySelector(".pc-n b");
+  if(!b) return;
+
+  const original = item.nome;
+  const input = document.createElement("input");
+  input.className = "login-input";
+  input.value = original;
+  input.style.cssText = "margin:0;padding:6px 10px;font-size:13px;min-width:140px;font-weight:700";
+  input.setAttribute("aria-label", "Novo nome");
+  b.replaceWith(input);
+  input.focus();
+  input.select();
+
+  let finished = false;
+
+  const cancel = () => {
+    if(finished) return;
+    finished = true;
+    renderCad();
+  };
+
+  const save = async () => {
+    if(finished) return;
+    finished = true;
+
+    const nn = input.value.trim();
+    if(!nn || nn === original){ renderCad(); return; }
+
+    const newId = slug(nn);
+    try{
+      if(!newId || newId === item.id){
+        await db.collection(COLS[cadTab]).doc(item.id).update({ nome: nn });
+      } else {
+        const existing = await db.collection(COLS[cadTab]).doc(newId).get();
+        if(existing.exists){
+          toast("Já existe um cadastro com esse nome.");
+          renderCad();
+          return;
+        }
+        const data = {...item};
+        delete data.id;
+        const batch = db.batch();
+        batch.set(db.collection(COLS[cadTab]).doc(newId), {...data, nome: nn});
+        batch.delete(db.collection(COLS[cadTab]).doc(item.id));
+        await batch.commit();
+      }
+      toast("✓ Cadastro atualizado.");
+    }catch(err){
+      console.warn(err);
+      toast("Erro ao editar cadastro.");
+    }
+    setTimeout(renderCad, 150);
+  };
+
+  input.addEventListener("keydown", e => {
+    if(e.key === "Enter"){ e.preventDefault(); save(); }
+    else if(e.key === "Escape"){ e.preventDefault(); cancel(); }
+  });
+  input.addEventListener("blur", save);
+  return;
+}
+
+  // ---- REMOVER (inalterado) ----
+  if(t.dataset.cx){
+    if(confirm("Remover este cadastro? Os pedidos já feitos não mudam."))
+      await db.collection(COLS[cadTab]).doc(t.dataset.cx).delete();
+    setTimeout(renderCad,40);
+    return;
+  }
+
+  // ---- ADICIONAR (inalterado) ----
+  if(t.hasAttribute("data-cadd")){
+    const v=m.querySelector("#cadNew").value.trim();if(!v)return;
+    const extra = cadTab==="prod" ? {mat:[],proc:PP}
+                : cadTab==="est" ? {tipo:"embalagem",qtd:0,minimo:0,unidade:"un"}
+                : {};
+    await regUp(COLS[cadTab],v,extra);
+    setTimeout(()=>{renderCad();const i=m.querySelector("#cadNew");if(i)i.focus()},40);
 }
     });
     m.addEventListener("change",e=>{const t=e.target;if(t.dataset&&t.dataset.cp)db.collection(COL_PROD).doc(t.dataset.cp).set({preco:Math.max(0,+t.value||0)},{merge:true})});
@@ -3304,6 +3482,7 @@ function openNovoPedido(){
     <h3 id="npT" class="pc-t">Novo pedido</h3>
     <label class="pc-l" for="npCli">Cliente</label><input id="npCli" class="login-input" list="dlCli" placeholder="Digite ou escolha um cliente" maxlength="60" autocomplete="off">
     <div class="pc-2"><div><label class="pc-l" for="npDt">Entrega</label><input id="npDt" class="login-input" type="date"></div><div><label class="pc-l" for="npTema">Tema</label><input id="npTema" class="login-input" list="dlTema" placeholder="Ex.: Safari" maxlength="80" autocomplete="off"></div></div>
+    <label class="pc-l" for="npInfo">Informações <small>(ex.: Eduardo - 3 anos)</small></label><input id="npInfo" class="login-input" placeholder="Ex.: Eduardo - 3 anos" maxlength="120" autocomplete="off">
     <div class="pc-l">Doces do pedido <span style="font-weight:600">(produto · quantidade · valor unitário)</span></div>
     <div id="npLines">${line()}</div>
     <button class="btn ghost" id="npAdd" type="button" style="width:100%;margin:2px 0 6px">+ Adicionar outro doce</button>
@@ -3327,13 +3506,13 @@ function openNovoPedido(){
   q("#npNo").onclick=close;
   q("#npDt").value=new Date(Date.now()+864e5).toISOString().slice(0,10);
   q("#npOk").onclick=async()=>{
-    const cli=q("#npCli").value.trim(),dt=q("#npDt").value,tema=q("#npTema").value.trim();
+    const cli=q("#npCli").value.trim(),dt=q("#npDt").value,tema=q("#npTema").value.trim(),info=q("#npInfo").value.trim();
     const lines=[...m.querySelectorAll(".pc-row")].map(r=>({nome:r.querySelector(".npP").value.trim(),qtd:Math.max(1,parseInt(r.querySelector(".npQ").value,10)||1),v:+r.querySelector(".npV").value||0})).filter(l=>l.nome);
     if(!cli||!dt||!lines.length){q("#npErr").textContent="Informe o cliente, a data de entrega e pelo menos um doce.";return}
     const total=Math.max(0,+q("#npTot").value||0),pago=Math.max(0,+q("#npPg").value||0);
     const nums=S.list.map(x=>parseInt(x.num,10)).filter(n=>!isNaN(n)),num=String((nums.length?Math.max(...nums):0)+1);
     const items=lines.map((l,i)=>{const p=findProd(l.nome);return{nota:"",alert:false,claimers:[],notes:[],rows:[R(i+1,l.nome,tema,((p&&p.mat)||[]).slice(),String(l.qtd),(p&&p.proc)||PP)]}});
-    const o={id:"os"+Date.now(),num,cliente:cli,tema,entrega:dt.split("-").reverse().join("/"),status:"Orçamento",pasta:"",pastaLink:"",items,total,pago,pagoOk:total>0&&pago>=total,createdBy:ME.uid,createdByName:ME.nome,createdAt:TS()};
+    const o={id:"os"+Date.now(),num,cliente:cli,tema,info,entrega:dt.split("-").reverse().join("/"),status:"Orçamento",pasta:"",pastaLink:"",items,total,pago,pagoOk:total>0&&pago>=total,createdBy:ME.uid,createdByName:ME.nome,createdAt:TS()};
     try{
       await osRef(o.id).set(o);
       regUp(COL_CLI,cli);regUp(COL_TEMA,tema);
@@ -4400,6 +4579,344 @@ document.addEventListener("keydown", e => {
   const m = open[open.length - 1]; if(!m) return;
   m.dispatchEvent(new MouseEvent("mousedown", {bubbles:true})); m.dispatchEvent(new MouseEvent("click", {bubbles:true}));
 });
+</script>
+<script id="receitas-modulo">
+/* ===== Receitas por PDF — módulo independente ===== */
+(function(){
+"use strict";
+const COL="ptg_receitas",LS="petitgatoo_receitas";
+const PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",PDFW="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const norm=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const H=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const g$=id=>document.getElementById(id);
+const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):s;
+
+/* ---------- 1. Leitura de ingredientes ---------- */
+const FR={"½":"1/2","¼":"1/4","¾":"3/4","⅓":"1/3","⅔":"2/3","⅛":"1/8"};
+const WN={um:1,uma:1,dois:2,duas:2,tres:3,quatro:4,cinco:5,seis:6,sete:7,oito:8,nove:9,dez:10,meia:.5,meio:.5};
+const UN="kg|g|mg|l|ml|litros?|quilos?|gramas?|mililitros?|x[ií]caras?|colheres?|colher|copos?|latas?|caixas?|caixinhas?|pacotes?|pitadas?|unidades?|unid|un|dentes?|fatias?|potes?|sach[êe]s?|envelopes?|barras?|gotas?|folhas?|ramos?|ma[çc]os?|tabletes?|cubos?|punhados?|fios?|talos?|peda[çc]os?|rodelas?|vidros?|garrafas?|frascos?|bandejas?|saquinhos?|sacos?|cs|cc";
+const NUMRE="(\\d+\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d+(?:[.,]\\d+)?)";
+const RE_Q=new RegExp("^"+NUMRE+"(?:\\s*(?:a|à|ou|-|–)\\s*"+NUMRE+")?(?=\\s|[a-zA-ZÀ-ú(]|$)","i");
+const RE_U=new RegExp("^("+UN+")\\.?(?:\\s*\\(?\\s*(?:de\\s+)?(ch[áa]|sopa|caf[ée]|sobremesa)\\s*\\)?)?(?![a-zA-ZÀ-ú])","i");
+const toNum=s=>{s=s.trim();let m;if(m=s.match(/^(\d+)\s+(\d+)\/(\d+)$/))return +m[1]+m[2]/m[3];if(m=s.match(/^(\d+)\/(\d+)$/))return m[1]/m[2];return parseFloat(s.replace(",","."))};
+function parseIng(raw){
+  let t=String(raw).replace(/^[\s•\-–—*·▪✓□☐■●○▢]+/,"").replace(/\s+/g," ").trim();
+  const o={raw:t,q:null,q2:null,txt:"",un:"",nome:t,obs:""};
+  if(!t)return o;
+  t=t.replace(/(\d)?\s*([½¼¾⅓⅔⅛])/g,(m,a,f)=>(a?a+" ":"")+FR[f]).replace(/^(\d+)\s+e\s+(\d+\/\d+)/i,"$1 $2").replace(/^(\d+)\s+e\s+(meia|meio)\b/i,"$1 1/2");
+  let rest=t,m;
+  if(m=rest.match(RE_Q)){o.q=toNum(m[1]);o.q2=m[2]?toNum(m[2]):null;o.txt=m[0].trim();rest=rest.slice(m[0].length).trim()}
+  else if(m=rest.match(/^(um|uma|dois|duas|tr[eê]s|quatro|cinco|seis|sete|oito|nove|dez|meia|meio)\b(?:\s+e\s+(meia|meio))?/i)){
+    o.q=WN[norm(m[1])]+(m[2]?.5:0);o.txt=m[0];rest=rest.slice(m[0].length).trim()}
+  const ag=rest.match(/\b(a gosto|q\.?\s?b\.?|quanto baste|\u00e0 vontade|a vontade)\b/i);
+  if(ag){if(o.q===null)o.txt=ag[1].toLowerCase();rest=(rest.slice(0,ag.index)+" "+rest.slice(ag.index+ag[0].length)).replace(/\s+/g," ").trim()}
+  if(o.q!==null&&(m=rest.match(RE_U))){o.un=m[1].toLowerCase()+(m[2]?" de "+m[2].toLowerCase():"");rest=rest.slice(m[0].length).trim()}
+  rest=rest.replace(/^(de|do|da|dos|das|d['’])\s*/i,"");
+  const obs=[];rest=rest.replace(/\(([^)]*)\)/g,(x,p)=>{if(p.trim())obs.push(p.trim());return" "}).replace(/\s+/g," ").trim();
+  const cm=rest.match(/^([^,]+?)\s*(?:,|\s-\s)\s*(.+)$/);if(cm){rest=cm[1].trim();obs.push(cm[2].trim())}
+  o.nome=rest||o.raw;o.obs=obs.join("; ");
+  return o;
+}
+function fmtQ(n){
+  if(n>=10)return String(Math.round(n*10)/10).replace(".",",");
+  const w=Math.floor(n+1e-9),f=n-w,C=[[0,""],[1/8,"1/8"],[1/4,"1/4"],[1/3,"1/3"],[3/8,"3/8"],[1/2,"1/2"],[5/8,"5/8"],[2/3,"2/3"],[3/4,"3/4"],[7/8,"7/8"],[1,""]];
+  let b=C[0],d=9;C.forEach(c=>{const e=Math.abs(f-c[0]);if(e<d){d=e;b=c}});
+  const W=w+(b[0]===1?1:0),fs=b[0]===1?"":b[1];
+  if(!W&&!fs)return n.toFixed(2).replace(".",",");
+  return [W||"",fs].filter(Boolean).join(" ");
+}
+const INV=new Set(["kg","g","mg","ml","l","un","cs","cc","unid"]);
+const sing=u=>{u=u.toLowerCase();if(INV.has(u))return u;if(/res$/.test(u))return u.slice(0,-2);return u.endsWith("s")?u.slice(0,-1):u};
+const plur=u=>INV.has(u)?u:/r$/.test(u)?u+"es":u+"s";
+function qtyStr(i,k){
+  if(i.q==null)return i.txt||"";
+  const a=i.q*k,b=i.q2!=null?i.q2*k:null,top=b??a;
+  let un="";if(i.un){const[w,...r]=i.un.split(" ");un=(top>1.0001?plur(sing(w)):sing(w))+(r.length?" "+r.join(" "):"")}
+  return fmtQ(a)+(b!=null?" a "+fmtQ(b):"")+(un?" "+un:"");
+}
+const ingParts=(i,k)=>({q:i.q==null?"":qtyStr(i,k),mid:i.q!=null&&i.un?"de ":"",after:i.q==null?(i.txt||""):""});
+const ingPlain=(i,k)=>{const p=ingParts(i,k);return[p.q,p.mid+i.nome,p.after].filter(Boolean).join(" ").replace(/\s+/g," ")};
+
+/* ---------- 2. Leitura das receitas (texto → receitas) ---------- */
+const RX={
+ ing:/^(?:lista de )?(ingredientes?|ingredients?|voce vai precisar(?: de)?|vai precisar(?: de)?|materiais)\b\s*(.*)$/,
+ prep:/^(modo de (?:preparo|fazer|preparar)|preparo|preparacao|como fazer|instrucoes|metodo|passo a passo|execucao|montagem e finalizacao)\b\s*(.*)$/,
+ notes:/^(dicas?|observacoes?|obs\.?|notas?|dica do chef|sugestoes?|segredo|importante)\s*(?::|-|–|$)\s*(.*)$/
+};
+const MK=/(rendimento|rende|por[cç][õo]es?|serve|tempo(?: de (?:preparo|cozimento|forno|descanso|geladeira))?|dificuldade|temperatura(?: do forno)?|forno|validade|calorias)\s*[:=\-–]\s*([^|•·;]+?)(?=\s{2,}|\s*[|•·;]|\s+(?:rendimento|rende|por[cç][õo]es?|serve|tempo(?: de \w+)?|dificuldade|temperatura(?: do forno)?|validade|calorias)\s*[:=\-–]|$)/gi;
+function metaOf(t){
+  const out=[];let m;MK.lastIndex=0;
+  while((m=MK.exec(t))){const k=norm(m[1]);out.push({k:/^rende/.test(k)?"Rendimento":cap(m[1].toLowerCase()),v:m[2].trim()})}
+  if(!out.length&&t.length<=45&&(m=norm(t).match(/^(rende|serve|rendimento|porcoes?)\s+(.*\d.*)$/)))out.push({k:cap(m[1]==="rende"?"rendimento":m[1]),v:t.slice(t.length-m[2].length).trim()});
+  return out;
+}
+function grpFrom(rest){
+  rest=rest.replace(/^[\s:\-–]+/,"").replace(/[:\s]+$/,"");
+  if(!rest)return"";if(/\d/.test(rest)||rest.length>40)return false;
+  return cap(rest.replace(/^(?:da|do|de|das|dos|para|pra)\s+(?:(?:a|o|as|os)\s+)?/i,"").trim()||rest);
+}
+function classify(t){
+  const tt=t.replace(/^[\s•\-–—*·▪■●○]+/,"").trim(),n=norm(tt);let m,g;
+  if(n.length<=60&&(m=n.match(RX.ing))&&(g=grpFrom(tt.slice(tt.length-m[2].length)))!==false)return{k:"ing",group:g};
+  if(n.length<=60&&(m=n.match(RX.prep))&&(g=grpFrom(tt.slice(tt.length-m[2].length)))!==false)return{k:"prep",group:g};
+  if(n.length<=80&&(m=n.match(RX.notes)))return{k:"notes",rest:tt.slice(tt.length-m[2].length).trim()};
+  const mt=metaOf(tt);if(mt.length)return{k:"meta",meta:mt};
+  return{k:"other"};
+}
+function isGroup(t,next,inIng){
+  if(/^\d/.test(t)||t.length>45)return null;
+  let m=t.match(/^(.{2,44}?)\s*:\s*$/);if(m&&!/\d/.test(m[1]))return grpFrom(m[1])||null;
+  if(inIng){m=t.match(/^(?:para|pra)\s+(?:a|o|as|os)\s+.{2,40}$/i);if(m&&!/[.,]$/.test(t)&&t.split(" ").length<=7)return grpFrom(t)||null;
+    if(/^[A-ZÀ-Ú \-\/]{3,40}$/.test(t)&&next&&/^(\d|[½¼¾]|um\b|uma\b|meia|meio)/i.test(next))return cap(t.toLowerCase())}
+  return null;
+}
+function cleanLines(lines){
+  const pages=new Set(lines.map(l=>l.p)).size,cnt={};
+  lines.forEach(l=>{const k=norm(l.t);cnt[k]=(cnt[k]||0)+1});
+  return lines.filter(l=>{const t=l.t.trim();if(!t)return false;
+    if(/^(p[aá]g(ina)?\.?\s*)?\d{1,3}\s*(\/|de)\s*\d{1,3}$/i.test(t))return false;
+    if(/^[-–—\s]*\d{1,3}[-–—\s]*$/.test(t))return false;
+    if(pages>=3&&t.length<60&&cnt[norm(t)]>=Math.max(3,pages*.6))return false;
+    return true});
+}
+function parseRecipes(raw,fname){
+  const lines=cleanLines(raw),K=lines.map(l=>classify(l.t));
+  const base=(fname||"").replace(/\.pdf$/i,"").replace(/[_\-]+/g," ").trim(),recs=[];
+  let cur=null,mode="pre",pre=[],preMeta=[],grp="";
+  const isCand=i=>{const t=lines[i].t;return K[i].k==="other"&&t.length>=3&&t.length<=80&&!/^[\d•\-–·▪]/.test(t)&&!/[.,;:]$/.test(t)&&t.split(" ").length<=12};
+  const pick=()=>{let c=pre.filter(x=>x.cand);if(recs.length===0&&c.length>=2&&c[0].h>c[1].h*1.15)c=c.slice(1); /* 1º texto maior = título do livro/arquivo */
+    if(!c.length)return null;let b=c[0];c.forEach(x=>{if(x.h>b.h*1.15)b=x});return b};
+  const open=()=>{const b=pick(),ti=b?pre.indexOf(b):-1;
+    const desc=pre.slice(ti+1).filter(x=>!x.cand||x.t.length>40).map(x=>x.t).join(" ");
+    cur={titulo:b?b.t:(base||"Receita "+(recs.length+1)),descricao:desc,meta:preMeta.slice(),ing:[],prep:[],notas:"",arquivo:fname||"",sawPrep:false};
+    recs.push(cur);pre=[];preMeta=[];grp=""};
+  const newAhead=i=>{if(!isCand(i))return false;for(let j=i+1;j<=i+4&&j<lines.length;j++){if(K[j].k==="ing")return true;if(K[j].k==="meta"||(K[j].k==="other"&&lines[j].t.length<=90))continue;break}return false};
+  for(let i=0;i<lines.length;i++){
+    const L=lines[i],k=K[i],t=L.t;
+    if(k.k==="ing"){if(mode==="pre"||!cur)open();mode="ing";grp=k.group||""}
+    else if(k.k==="prep"){if(!cur)open();mode="prep";grp=k.group||"";cur.sawPrep=true}
+    else if(k.k==="notes"){if(!cur)open();mode="notes";if(k.rest)cur.notas+=(cur.notas?"\n":"")+k.rest}
+    else if(k.k==="meta"){if(cur&&mode!=="pre")cur.meta.push(...k.meta);else preMeta.push(...k.meta)}
+    else if(mode==="pre"){pre.push({t,h:L.h,cand:isCand(i)})}
+    else if((mode==="prep"||mode==="notes")&&newAhead(i)){cur=null;mode="pre";pre=[{t,h:L.h,cand:true}];preMeta=[]}
+    else if(mode==="ing"){
+      const gp=isGroup(t,lines[i+1]&&lines[i+1].t,true);if(gp){grp=gp;continue}
+      const prev=cur.ing[cur.ing.length-1];
+      if(prev&&prev.g===grp&&(/^[()]/.test(t)||(/^[a-zà-ú]/.test(t)&&/(,| de| e| com| ou| em| para| a)$/.test(prev.raw)))){Object.assign(prev,parseIng(prev.raw+" "+t),{g:grp})}
+      else cur.ing.push(Object.assign(parseIng(t),{g:grp}));
+    }
+    else if(mode==="prep"){
+      const gp=isGroup(t,null,false);if(gp){grp=gp;continue}
+      const nm=t.match(/^(?:passo|etapa)\s*\d+\s*[:.\-–]?\s*(.+)$/i)||t.match(/^\d{1,2}\s*[.)\-–:]\s*(.+)$/)||t.match(/^[•\-–·▪■●○*]\s*(.+)$/);
+      const prev=cur.prep[cur.prep.length-1];
+      if(nm)cur.prep.push({g:grp,t:nm[1].trim()});
+      else if(prev&&prev.g===grp&&(!/[.!?:;]$/.test(prev.t)||/^[a-zà-ú(]/.test(t)))prev.t+=" "+t;
+      else cur.prep.push({g:grp,t});
+    }
+    else if(mode==="notes")cur.notas+=(cur.notas?" ":"")+t;
+  }
+  let out=recs.filter(r=>r.ing.length||r.prep.length);
+  if(!out.length&&lines.length>=4){ /* sem cabeçalhos: tenta por padrão de quantidades */
+    const ing=[],prep=[];let best=lines.slice(0,6).reduce((a,l)=>l.h>(a?a.h:0)&&l.t.length<=80?l:a,null);
+    lines.forEach(l=>{const p=parseIng(l.t);if(l!==best&&(p.q!==null||p.txt)&&l.t.length<70)ing.push(Object.assign(p,{g:""}));else if(l!==best&&l.t.length>25)prep.push({g:"",t:l.t})});
+    if(ing.length>=2)out=[{titulo:best?best.t:(base||"Receita"),descricao:"",meta:[],ing,prep,notas:"",arquivo:fname||""}];
+  }
+  out.forEach(r=>{delete r.sawPrep;r.meta=r.meta.filter((m,i,a)=>a.findIndex(x=>x.k===m.k&&x.v===m.v)===i)});
+  return out;
+}
+
+/* ---------- 3. Leitura do PDF (pdf.js sob demanda) ---------- */
+const loadScript=src=>new Promise((ok,no)=>{const s=document.createElement("script");s.src=src;s.onload=ok;s.onerror=()=>no(new Error("Não consegui carregar o leitor de PDF (sem internet?)"));document.head.appendChild(s)});
+async function pdfjs(){
+  if(window.pdfjsLib)return window.pdfjsLib;
+  await loadScript(PDFJS);
+  try{const b=await(await fetch(PDFW)).blob();pdfjsLib.GlobalWorkerOptions.workerSrc=URL.createObjectURL(b)}catch(e){pdfjsLib.GlobalWorkerOptions.workerSrc=PDFW}
+  return pdfjsLib;
+}
+async function pdfToLines(file){
+  const lib=await pdfjs(),pdf=await lib.getDocument({data:await file.arrayBuffer()}).promise,out=[];
+  for(let p=1;p<=pdf.numPages;p++){
+    const tc=await(await pdf.getPage(p)).getTextContent();
+    const its=tc.items.filter(i=>typeof i.str==="string"&&i.str.trim()!=="").map(i=>({s:i.str,x:i.transform[4],y:i.transform[5],h:Math.hypot(i.transform[2],i.transform[3])||i.height||10,w:i.width||0}));
+    its.sort((a,b)=>b.y-a.y||a.x-b.x);
+    const rows=[];
+    its.forEach(it=>{const r=rows.find(r=>Math.abs(r.y-it.y)<=Math.max(2,Math.min(r.h,it.h)*.45));r?r.it.push(it):rows.push({y:it.y,h:it.h,it:[it]})});
+    rows.sort((a,b)=>b.y-a.y).forEach(r=>{r.it.sort((a,b)=>a.x-b.x);let t="",px=null;
+      r.it.forEach(i=>{if(px!==null&&i.x-px>1.2&&!/\s$/.test(t)&&!/^\s/.test(i.s))t+=" ";t+=i.s;px=i.x+i.w});
+      out.push({t:t.replace(/\s+/g," ").trim(),h:Math.max(...r.it.map(i=>i.h)),p})});
+  }
+  return out;
+}
+
+/* ---------- 4. Armazenamento (Firestore, com cópia local de segurança) ---------- */
+const ST={list:[],mode:"cloud",unsub:null,err:"",scale:1,rev:[],cur:null,q:""};
+const loadLocal=()=>{try{return JSON.parse(localStorage.getItem(LS))||[]}catch(e){return[]}};
+const saveLocal=()=>{try{localStorage.setItem(LS,JSON.stringify(ST.list))}catch(e){toast("⚠ Armazenamento do navegador cheio.")}};
+function startRec(){
+  stopRec();
+  try{ST.unsub=db.collection(COL).onSnapshot(snap=>{ST.mode="cloud";ST.err="";ST.list=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.criadoEm||0)-(a.criadoEm||0));draw()},
+    err=>{console.warn("receitas:",err);ST.mode="local";ST.err=(err&&(err.code||err.message))||"erro";ST.list=loadLocal();draw()})}
+  catch(e){ST.mode="local";ST.list=loadLocal();draw()}
+}
+function stopRec(){if(ST.unsub){ST.unsub();ST.unsub=null}ST.list=[];document.querySelectorAll("#rcPanel,.rc-modal").forEach(e=>e.style.display="none")}
+async function saveRec(r){
+  r=JSON.parse(JSON.stringify(r));r.id=r.id||("rc"+Date.now().toString(36)+Math.random().toString(36).slice(2,5));r.criadoEm=r.criadoEm||Date.now();
+  if(ST.mode==="cloud"){try{await db.collection(COL).doc(r.id).set(r);return r}catch(e){console.warn(e);ST.mode="local";ST.err=e.code||"erro"}}
+  const i=ST.list.findIndex(x=>x.id===r.id);i>=0?ST.list[i]=r:ST.list.unshift(r);saveLocal();draw();return r;
+}
+async function delRec(id){
+  if(ST.mode==="cloud"){try{await db.collection(COL).doc(id).delete();return}catch(e){console.warn(e);ST.mode="local"}}
+  ST.list=ST.list.filter(x=>x.id!==id);saveLocal();draw();
+}
+
+/* ---------- 5. Interface ---------- */
+function modal(id,html,cls){
+  const old=g$(id);if(old)old.remove();
+  const m=document.createElement("div");m.className="name-modal rc-modal";m.id=id;m.innerHTML=`<div class="login-card rc-box ${cls||""}" role="dialog" aria-modal="true">${html}</div>`;
+  document.body.appendChild(m);m.style.display="flex";
+  m.addEventListener("mousedown",e=>{if(e.target===m)m.remove()});
+  return m;
+}
+const ingText=r=>{let g="",o=[];r.ing.forEach(i=>{if((i.g||"")!==g){g=i.g||"";if(g)o.push(g+":")}o.push(i.raw)});return o.join("\n")};
+const prepText=r=>{let g="",o=[];r.prep.forEach(s=>{if((s.g||"")!==g){g=s.g||"";if(g)o.push(g+":")}o.push(s.t)});return o.join("\n")};
+function textToIng(tx){let g="",o=[];tx.split("\n").map(s=>s.trim()).filter(Boolean).forEach(t=>{const gp=isGroup(t,null,false);if(gp)g=gp;else o.push(Object.assign(parseIng(t),{g}))});return o}
+function textToPrep(tx){let g="",o=[];tx.split("\n").map(s=>s.trim()).filter(Boolean).forEach(t=>{const gp=isGroup(t,null,false);if(gp){g=gp;return}o.push({g,t:t.replace(/^\d{1,2}\s*[.)\-–:]\s*/,"").replace(/^[•\-–·▪■●○*]\s*/,"")})});return o}
+const metaStr=r=>(r.meta||[]).map(m=>m.k+": "+m.v).join(" | ");
+const strMeta=s=>s.split("|").map(x=>x.trim()).filter(Boolean).map(x=>{const i=x.indexOf(":");return i>0?{k:x.slice(0,i).trim(),v:x.slice(i+1).trim()}:{k:"Info",v:x}});
+
+function draw(){
+  const p=g$("rcPanel");if(!p)return;
+  const q=norm(ST.q),list=ST.list.filter(r=>!q||norm(r.titulo+" "+r.ing.map(i=>i.raw).join(" ")).includes(q));
+  g$("rcBanner").innerHTML=ST.mode==="local"?`<div class="rc-warn">As receitas estão sendo salvas só neste navegador, porque o Firestore não liberou a coleção <b>${COL}</b>${ST.err?" ("+H(ST.err)+")":""}. Para compartilhar com a equipe, adicione nas regras do Firestore: <code>match /${COL}/{id} { allow read, write: if request.auth != null; }</code> e recarregue a página.</div>`:"";
+  g$("rcGrid").innerHTML=list.map(r=>`<article class="rc-card" tabindex="0" role="button" data-rc="${H(r.id)}"><h3>${H(r.titulo)}</h3><div class="rc-chips">${(r.meta||[]).slice(0,2).map(m=>`<span class="rc-chip">${H(m.k)}: ${H(m.v)}</span>`).join("")}<span class="rc-chip">${r.ing.length} ingredientes</span><span class="rc-chip">${r.prep.length} passos</span></div><ul class="rc-prev">${r.ing.slice(0,4).map(i=>`<li>${H(i.raw)}</li>`).join("")}${r.ing.length>4?`<li class="rc-more">+ ${r.ing.length-4} ingredientes</li>`:""}</ul><div class="rc-src">${r.arquivo?"📄 "+H(r.arquivo):"✍️ criada manualmente"}</div></article>`).join("")
+    ||`<div class="rc-empty">${ST.list.length?"Nenhuma receita encontrada para essa busca.":"Nenhuma receita ainda. Envie um PDF para começar."}</div>`;
+}
+function bodyHTML(r,k){
+  const grpd=(arr,li,tag)=>{let g=null,h="",n=0;arr.forEach(x=>{if((x.g||"")!==g){if(g!==null)h+=`</${tag}>`;g=x.g||"";if(g)h+=`<h5 class="rc-g">${H(g)}</h5>`;h+=tag==="ol"?`<ol class="rc-ol" start="${n+1}">`:`<ul class="rc-ul">`}h+=li(x,n);n++});return h+(g!==null?`</${tag}>`:"")};
+  return `${r.descricao?`<p class="rc-desc">${H(r.descricao)}</p>`:""}
+  <h4 class="rc-h">Ingredientes</h4>${grpd(r.ing,i=>(()=>{const p=ingParts(i,k);return`<li>${p.q?`<b class="rc-q">${H(p.q)}</b> `:""}${p.mid}${H(i.nome)}${p.after?` <b class="rc-q">${H(p.after)}</b>`:""}${i.obs?` <small>(${H(i.obs)})</small>`:""}</li>`})(),"ul")||'<p class="rc-desc">Sem ingredientes.</p>'}
+  <h4 class="rc-h">Modo de preparo</h4>${grpd(r.prep,s=>`<li>${H(s.t)}</li>`,"ol")||'<p class="rc-desc">Sem modo de preparo.</p>'}
+  ${r.notas?`<h4 class="rc-h">Observações</h4><p class="rc-desc">${H(r.notas)}</p>`:""}`;
+}
+function openView(id){
+  const r=ST.list.find(x=>x.id===id);if(!r)return;ST.cur=id;ST.scale=1;renderView();
+}
+function renderView(){
+  const r=ST.list.find(x=>x.id===ST.cur);if(!r)return;
+  const sc=[.5,1,2,3];
+  const m=modal("rcView",`<div class="rc-vh"><h3 class="rc-t">${H(r.titulo)}</h3><button class="btn ghost" data-a="x" type="button" aria-label="Fechar">✕</button></div>
+   <div class="rc-chips">${(r.meta||[]).map(m=>`<span class="rc-chip">${H(m.k)}: ${H(m.v)}</span>`).join("")}${r.arquivo?`<span class="rc-chip">📄 ${H(r.arquivo)}</span>`:""}</div>
+   <div class="rc-scale" role="group" aria-label="Multiplicar quantidades"><span>Quantidades ×</span>${sc.map(v=>`<button class="btn ${ST.scale===v?"pri":"ghost"}" data-sc="${v}" type="button">${v===.5?"½":v}</button>`).join("")}<input class="rc-in" id="rcSc" type="number" min="0.1" step="0.1" value="${ST.scale}" aria-label="Fator personalizado"></div>
+   ${bodyHTML(r,ST.scale)}
+   <div class="rc-foot"><button class="btn pri" data-a="edit" type="button">Editar</button><button class="btn ghost" data-a="copy" type="button">Copiar</button><button class="btn ghost" data-a="print" type="button">Imprimir</button><button class="btn ghost rc-del" data-a="del" type="button">Excluir</button></div>`,"rc-view");
+  m.onclick=e=>{const b=e.target.closest("[data-a],[data-sc]");if(!b)return;
+    if(b.dataset.sc){ST.scale=+b.dataset.sc;renderView();return}
+    const a=b.dataset.a;if(a==="x")m.remove();
+    else if(a==="edit"){m.remove();openEdit(r)}
+    else if(a==="copy")copyRec(r);
+    else if(a==="print")printRec(r);
+    else if(a==="del"&&confirm("Excluir a receita “"+r.titulo+"”?")){delRec(r.id);m.remove();toast("Receita excluída.")}};
+  m.querySelector("#rcSc").onchange=e=>{const v=parseFloat(e.target.value);if(v>0){ST.scale=v;renderView()}};
+}
+function plainText(r,k){
+  const L=[r.titulo,metaStr(r).replace(/ \| /g," · "),"","INGREDIENTES"];let g="";
+  r.ing.forEach(i=>{if((i.g||"")!==g){g=i.g||"";if(g)L.push(g+":")}L.push("• "+ingPlain(i,k)+(i.obs?" ("+i.obs+")":""))});
+  L.push("","MODO DE PREPARO");g="";let n=0;r.prep.forEach(s=>{if((s.g||"")!==g){g=s.g||"";if(g)L.push(g+":")}L.push(++n+". "+s.t)});
+  if(r.notas)L.push("","OBSERVAÇÕES",r.notas);return L.filter((x,i,a)=>!(x===""&&a[i-1]==="")).join("\n");
+}
+async function copyRec(r){const t=plainText(r,ST.scale);try{await navigator.clipboard.writeText(t);toast("✓ Receita copiada.")}catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("✓ Receita copiada.")}catch(_){toast("Não foi possível copiar.")}ta.remove()}}
+function printRec(r){
+  const w=window.open("","_blank");if(!w){toast("Libere pop-ups para imprimir.");return}
+  w.document.write(`<!doctype html><meta charset="utf-8"><title>${H(r.titulo)}</title><style>body{font:15px/1.55 system-ui,sans-serif;max-width:720px;margin:28px auto;padding:0 18px;color:#2b1b14}h1{font-size:26px;margin:0 0 4px}h4{margin:22px 0 6px;border-bottom:2px solid #e6d3c1;padding-bottom:4px}h5{margin:12px 0 2px}ul,ol{padding-left:22px}li{margin:3px 0}.m{color:#7a5a4a}
+.tinfo{font-size:11px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:-2px}
+.info .info-obs{flex:1 1 220px}
+</style><h1>${H(r.titulo)}</h1><div class="m">${H(metaStr(r).replace(/ \| /g," · "))}${ST.scale!==1?" · quantidades ×"+ST.scale:""}</div>${bodyHTML(r,ST.scale).replace(/class="rc-[a-z]+"/g,"")}`);
+  w.document.close();w.focus();setTimeout(()=>w.print(),250);
+}
+function openEdit(r){
+  r=r||{titulo:"",ing:[],prep:[],meta:[],notas:"",descricao:"",arquivo:""};
+  const m=modal("rcEdit",`<div class="rc-vh"><h3 class="rc-t">${r.id?"Editar receita":"Nova receita"}</h3><button class="btn ghost" data-a="x" type="button" aria-label="Fechar">✕</button></div>
+   <label class="rc-l" for="reT">Nome da receita</label><input id="reT" class="rc-in" value="${H(r.titulo)}" maxlength="120">
+   <label class="rc-l" for="reM">Detalhes <small>(ex.: Rendimento: 12 porções | Tempo: 45 min)</small></label><input id="reM" class="rc-in" value="${H(metaStr(r))}">
+   <label class="rc-l" for="reI">Ingredientes <small>(um por linha; uma linha terminada em “:” cria um grupo, como “Massa:”)</small></label><textarea id="reI" class="rc-in" rows="9">${H(ingText(r))}</textarea>
+   <label class="rc-l" for="reP">Modo de preparo <small>(um passo por linha)</small></label><textarea id="reP" class="rc-in" rows="9">${H(prepText(r))}</textarea>
+   <label class="rc-l" for="reN">Observações</label><textarea id="reN" class="rc-in" rows="3">${H(r.notas||"")}</textarea>
+   <div id="reE" class="rc-err" role="alert"></div>
+   <div class="rc-foot"><button class="btn pri" data-a="save" type="button">Salvar</button><button class="btn ghost" data-a="x" type="button">Cancelar</button></div>`,"rc-edit");
+  m.onclick=async e=>{const b=e.target.closest("[data-a]");if(!b)return;
+    if(b.dataset.a==="x"){m.remove();return}
+    const t=m.querySelector("#reT").value.trim(),ing=textToIng(m.querySelector("#reI").value),prep=textToPrep(m.querySelector("#reP").value);
+    if(!t){m.querySelector("#reE").textContent="Dê um nome para a receita.";return}
+    if(!ing.length&&!prep.length){m.querySelector("#reE").textContent="Informe ao menos um ingrediente ou um passo.";return}
+    const nr=await saveRec({...r,titulo:t,meta:strMeta(m.querySelector("#reM").value),ing,prep,notas:m.querySelector("#reN").value.trim(),criadoPor:r.criadoPor||(typeof ME!=="undefined"?ME.nome:"")});
+    m.remove();toast("✓ Receita salva.");if(r.id)openView(nr.id)};
+  setTimeout(()=>m.querySelector("#reT").focus(),30);
+}
+function busy(msg){const b=g$("rcBusy");if(b){b.textContent=msg||"";b.style.display=msg?"block":"none"}}
+async function handleFiles(files){
+  const res=[];
+  for(const f of files){
+    if(!/\.pdf$/i.test(f.name)&&f.type!=="application/pdf"){toast("“"+f.name+"” não é um PDF.");continue}
+    try{busy("Lendo "+f.name+"…");const lines=await pdfToLines(f);res.push({file:f.name,lines,recs:parseRecipes(lines,f.name)})}
+    catch(e){console.error(e);res.push({file:f.name,lines:[],recs:[],error:e.message||String(e)})}
+  }
+  busy("");if(res.length){ST.rev=res.map(r=>({...r,recs:r.recs.map(x=>({...x,incl:true}))}));drawReview()}
+}
+function drawReview(){
+  const total=ST.rev.reduce((n,f)=>n+f.recs.length,0);
+  const m=modal("rcRev",`<div class="rc-vh"><h3 class="rc-t">${total?total+" receita"+(total>1?"s":"")+" encontrada"+(total>1?"s":""):"Leitura do PDF"}</h3><button class="btn ghost" data-a="x" type="button">Cancelar</button></div>
+   <p class="rc-desc">Confira os nomes e desmarque o que não for receita. Depois de salvar, você ainda pode editar cada card.</p>
+   ${ST.rev.map((f,fi)=>`<div class="rc-file"><b>📄 ${H(f.file)}</b>
+     ${f.error?`<p class="rc-err">${H(f.error)}</p>`:!f.recs.length?`<p class="rc-err">${f.lines.map(l=>l.t).join("").length<40?"Esse PDF não tem texto selecionável (parece escaneado ou é uma imagem). Digite a receita manualmente em “+ Nova”.":"Não encontrei as seções “Ingredientes” e “Modo de preparo” neste arquivo."}</p>${f.lines.length>=4?`<button class="btn ghost" data-a="raw" data-f="${fi}" type="button">Abrir o texto como receita manual</button>`:""}`:""}
+     ${f.recs.map((r,ri)=>`<div class="rc-rev"><input type="checkbox" data-rv="${fi}:${ri}" ${r.incl?"checked":""} aria-label="Incluir ${H(r.titulo)}"><div class="rc-revb"><input class="rc-in" data-rt="${fi}:${ri}" value="${H(r.titulo)}" aria-label="Nome da receita"><small>${r.ing.length} ingredientes · ${r.prep.length} passos${r.meta.length?" · "+H(metaStr(r).replace(/ \| /g," · ")):""}</small><details><summary>Ver prévia</summary><ul class="rc-ul">${r.ing.slice(0,12).map(i=>`<li>${H(i.raw)}</li>`).join("")}${r.ing.length>12?"<li>…</li>":""}</ul></details></div></div>`).join("")}</div>`).join("")}
+   ${total?`<div class="rc-foot"><button class="btn pri" data-a="save" type="button">Salvar receitas selecionadas</button></div>`:""}`,"rc-edit");
+  m.onchange=e=>{const t=e.target;if(t.dataset.rv){const[a,b]=t.dataset.rv.split(":");ST.rev[a].recs[b].incl=t.checked}};
+  m.oninput=e=>{const t=e.target;if(t.dataset.rt){const[a,b]=t.dataset.rt.split(":");ST.rev[a].recs[b].titulo=t.value}};
+  m.onclick=async e=>{const b=e.target.closest("[data-a]");if(!b)return;
+    if(b.dataset.a==="x"){m.remove();return}
+    if(b.dataset.a==="raw"){const f=ST.rev[+b.dataset.f];m.remove();openEdit({titulo:f.file.replace(/\.pdf$/i,""),ing:[],prep:f.lines.map(l=>({g:"",t:l.t})),meta:[],notas:"",arquivo:f.file});return}
+    if(b.dataset.a==="save"){let n=0;b.disabled=true;
+      for(const f of ST.rev)for(const r of f.recs){if(!r.incl)continue;const{incl,...x}=r;await saveRec({...x,titulo:(x.titulo||"").trim()||"Receita sem nome",arquivo:f.file,criadoEm:Date.now()+n,criadoPor:typeof ME!=="undefined"?ME.nome:""});n++}
+      m.remove();toast(n?"✓ "+n+" receita"+(n>1?"s":"")+" salva"+(n>1?"s":"")+".":"Nenhuma receita selecionada.")}};
+}
+function ensurePanel(){
+  let p=g$("rcPanel");if(p)return p;
+  p=document.createElement("div");p.id="rcPanel";p.className="rc-panel";p.setAttribute("role","dialog");p.setAttribute("aria-modal","true");p.setAttribute("aria-label","Receitas");
+  p.innerHTML=`<div class="rc-top"><h2 class="rc-h2">📖 Receitas</h2><div class="rc-actions"><input id="rcQ" class="rc-in rc-search" type="search" placeholder="Buscar receita ou ingrediente…" aria-label="Buscar receitas"><button class="btn" id="rcNew" type="button">+ Nova</button><button class="btn pri" id="rcUp" type="button">📄 Enviar PDF</button><button class="btn ghost" id="rcClose" type="button">Fechar</button></div></div>
+   <div id="rcBanner"></div><div id="rcBusy" class="rc-busy" role="status"></div>
+   <label class="rc-drop" id="rcDrop" for="rcFile"><b>Arraste PDFs de receitas aqui</b> ou clique para escolher<small>Um PDF pode ter várias receitas: cada uma vira um card.</small><input id="rcFile" type="file" accept="application/pdf,.pdf" multiple hidden></label>
+   <div id="rcGrid" class="rc-grid"></div>`;
+  document.body.appendChild(p);
+  const f=g$("rcFile");
+  f.onchange=()=>{const fs=[...f.files];f.value="";if(fs.length)handleFiles(fs)};
+  g$("rcUp").onclick=()=>f.click();
+  g$("rcNew").onclick=()=>openEdit();
+  g$("rcClose").onclick=()=>{p.style.display="none"};
+  g$("rcQ").oninput=e=>{ST.q=e.target.value;draw()};
+  g$("rcGrid").onclick=e=>{const c=e.target.closest("[data-rc]");if(c)openView(c.dataset.rc)};
+  g$("rcGrid").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){const c=e.target.closest("[data-rc]");if(c){e.preventDefault();openView(c.dataset.rc)}}};
+  const d=g$("rcDrop");
+  ["dragenter","dragover"].forEach(ev=>d.addEventListener(ev,e=>{e.preventDefault();d.classList.add("on")}));
+  ["dragleave","drop"].forEach(ev=>d.addEventListener(ev,e=>{e.preventDefault();d.classList.remove("on")}));
+  d.addEventListener("drop",e=>{const fs=[...(e.dataTransfer&&e.dataTransfer.files||[])];if(fs.length)handleFiles(fs)});
+  return p;
+}
+function openRec(){const p=ensurePanel();p.style.display="flex";draw();setTimeout(()=>g$("rcUp").focus(),30)}
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;const ms=[...document.querySelectorAll(".rc-modal")].filter(m=>m.style.display!=="none");
+  if(ms.length){ms[ms.length-1].remove();e.stopPropagation();return}
+  const p=g$("rcPanel");if(p&&p.style.display==="flex")p.style.display="none"},true);
+const btn=g$("recBtn");if(btn)btn.onclick=openRec;
+window.startRec=startRec;window.stopRec=stopRec;window.openRec=openRec;
+window.RecParser={parseRecipes,parseIng,qtyStr,fmtQ,classify,ingPlain};
+})();
+</script>
+<script>
+/* PWA: registra o service worker (só funciona em https:// ou localhost) */
+if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function (e) { console.warn("SW:", e); });
+  });
+}
 </script>
 </body>
 </html>
